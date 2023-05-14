@@ -1,6 +1,11 @@
 part of 'register_cubit.dart';
 
-enum RegisterStatus { initial, submitting, succes, error }
+enum RegisterStatus {
+  initial,
+  submitting,
+  succes,
+  error,
+}
 
 class RegisterState extends Equatable {
   final String email;
