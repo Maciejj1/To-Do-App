@@ -47,6 +47,7 @@ dependencies:
   top_snackbar_flutter: ^3.0.0+1
   drag_and_drop_lists: ^0.3.3
   flutter_emoji: ^2.4.0
+  timeago: ^3.4.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

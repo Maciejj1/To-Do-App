@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/pages/dashboard/todo-list/view/todo.dart';
 
 import '../../config/helpers/todo-appBar.dart';
 import '../../config/helpers/todo-bottomNavBar.dart';
@@ -21,6 +22,7 @@ class _ToDoSettingsState extends State<ToDoSettings> {
       appBar: const TodoAppBar(),
       drawer: TodoDrawer(),
       bottomNavigationBar: const ToDoBottomNav(),
+      body: ToDoScreen(),
     );
   }
 }
