@@ -16,13 +16,33 @@ class _ToDoSettingsState extends State<ToDoSettings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-      ),
-      appBar: const TodoAppBar(),
+      appBar: TodoAppBar(),
       drawer: TodoDrawer(),
-      bottomNavigationBar: const ToDoBottomNav(),
-      body: ToDoScreen(),
+      body: SafeArea(
+          child: SingleChildScrollView(
+              child: Column(children: [
+        ElevatedButton(
+          onPressed: () {},
+          child: Text('Zmien email'),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        ElevatedButton(
+          onPressed: () {},
+          child: Text('Zmien hasło'),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        ElevatedButton(
+          onPressed: () {},
+          child: Text('Usuń konto'),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+      ]))),
     );
   }
 }

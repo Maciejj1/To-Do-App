@@ -8,7 +8,16 @@ class TodoAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      title: Text('TODO'),
       backgroundColor: Color(0xFF6200EE),
+      flexibleSpace: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[Color(0xFF434FFF), Color(0xFF8409FF)]),
+        ),
+      ),
     );
   }
 

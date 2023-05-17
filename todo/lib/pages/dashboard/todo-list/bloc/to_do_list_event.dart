@@ -10,6 +10,11 @@ class LoadToDoList extends ToDoListEvent {
   List<Object?> get props => [];
 }
 
+class TaskAdded extends ToDoListEvent {
+  @override
+  List<Object?> get props => [];
+}
+
 // class CreateToDo extends ToDoListEvent {
 //   TaskModel taskModel;
 //   CreateToDo({required this.taskModel});

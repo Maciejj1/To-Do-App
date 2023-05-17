@@ -32,3 +32,19 @@ class ShowTaskModel {
     taskTime = json['taskTime'];
   }
 }
+
+class Todo {
+  String? id;
+  final String todoText;
+  final Timestamp createdAt;
+  final int status;
+
+  Todo({required this.todoText, required this.createdAt, required this.status});
+
+  factory Todo.fromJson(Map<String, dynamic> json) => Todo(
+      todoText: json['todoText'],
+      createdAt: json['createdAt'],
+      status: json['status']);
+  Map<String, dynamic> toJson() =>
+      {"todoText": todoText, "createdAt": createdAt, "status": status};
+}

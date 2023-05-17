@@ -7,6 +7,7 @@ import 'package:todo/config/routes/todo_routes.dart';
 import 'package:todo/firebase_options.dart';
 import 'package:todo/pages/auth/conf/auth_repository.dart';
 import 'package:todo/pages/auth/register/cubit/register_cubit.dart';
+import 'package:todo/pages/dashboard/todo-list/cubit/to_do_list_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,10 +51,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider.value(
-        value: _authRepository,
-        child: BlocProvider(
+      value: _authRepository,
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
             create: (_) => AppBloc(authRepository: _authRepository),
-            child: AppView()));
+          ),
+          BlocProvider(create: (context) => ToDoCubit()..getAllTodo())
+        ],
+        child: AppView(),
+      ),
+    );
   }
 }
 
@@ -63,6 +71,7 @@ class AppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Go router',
       home: FlowBuilder(
         onGeneratePages: onGeneratedAppViewPages,

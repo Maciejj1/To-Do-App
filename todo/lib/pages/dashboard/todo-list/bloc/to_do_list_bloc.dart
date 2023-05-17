@@ -25,6 +25,17 @@ class ToDoListBloc extends Bloc<ToDoListEvent, ToDoListState> {
         emit(ToDoListErrorState(e.toString()));
       }
     });
+    on<TaskAdded>((event, emit) async {
+      emit(ToDoListLoadingState());
+      try {
+        final tasks = await toDoRepository.getTasks();
+        emit(ToDoListLoadedState(tasks));
+      } catch (e, stacktrace) {
+        print(e.toString());
+        print(stacktrace.toString());
+        emit(ToDoListErrorState(e.toString()));
+      }
+    });
   }
 }
 

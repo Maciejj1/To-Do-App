@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo/config/bloc/app_bloc.dart';
 import 'package:todo/config/bloc/app_bloc.dart';
+import 'package:todo/config/helpers/todo-bottomNavBar.dart';
 import 'package:todo/config/routes/todo_route_utils.dart';
 import 'package:todo/pages/auth/conf/auth_repository.dart';
 import 'package:todo/pages/auth/login/cubit/login_cubit.dart';
@@ -64,10 +65,9 @@ List<Page<dynamic>> onGeneratedAppViewPages(
 ) {
   switch (state) {
     case AppStatus.authenticated:
-      return [Dashboard.page()];
+      return [MainPage.page()];
     case AppStatus.unauthenticated:
       return [
-        SplashScreen.page(),
         RegisterScreen.page(),
         LoginScreen.page(),
       ];

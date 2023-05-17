@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo/config/helpers/to_do_icons_icons.dart';
+import 'package:todo/config/helpers/todo-bottomNavBar.dart';
 import 'package:todo/pages/auth/conf/auth_repository.dart';
 import 'package:todo/pages/auth/login/cubit/login_cubit.dart';
 import 'package:todo/pages/dashboard/dashboard.dart';
@@ -83,7 +85,7 @@ class ToDoDraweContentBody extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(
-              Icons.home,
+              ToDoIcons.icon__home_2_,
               color: Colors.white,
             ),
             title: const Text(
@@ -94,12 +96,12 @@ class ToDoDraweContentBody extends StatelessWidget {
             ),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Dashboard()));
+                  MaterialPageRoute(builder: (context) => const MainPage()));
             },
           ),
           ListTile(
             leading: const Icon(
-              Icons.settings,
+              ToDoIcons.icon__setting_2_,
               color: Colors.white,
             ),
             title: const Text(

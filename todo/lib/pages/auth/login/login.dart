@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
+import 'package:todo/config/helpers/todo-appBar.dart';
 import 'package:todo/pages/auth/conf/auth_repository.dart';
 import 'package:todo/pages/auth/login/cubit/login_cubit.dart';
 import 'package:todo/pages/auth/models/user_model.dart';
@@ -21,7 +23,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: TodoAppBar(),
       body: SafeArea(
           child: SingleChildScrollView(
         child: Padding(
@@ -134,6 +136,27 @@ class LoginForm extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+            width: 220,
+            child: GradientText(
+              'Welcome back in To-Do App',
+              style:
+                  const TextStyle(fontSize: 25.0, fontWeight: FontWeight.w500),
+              textAlign: TextAlign.center,
+              radius: 2.5,
+              colors: const [
+                Color(0xFF4151FF),
+                Color(0xFF8409FF),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          SizedBox(width: 200, child: Image.asset('assets/images/loginv.png')),
+          SizedBox(
             height: 8,
           ),
           LoginEmailInput(),
@@ -142,22 +165,25 @@ class LoginForm extends StatelessWidget {
           ),
           LoginPasswordInput(),
           SizedBox(
-            height: 8,
+            height: 50,
           ),
           LoginButton(),
           SizedBox(
             height: 8,
           ),
-          ElevatedButton(
-              // onPressed: () {
-              //   // context.go(
-              //   //   '/register',
-              //   // );
-
-              // },
-              onPressed: () =>
-                  Navigator.of(context).push<void>(RegisterScreen.route()),
-              child: Text('Go register')),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('You don\'t have an account? '),
+              TextButton(
+                  onPressed: () =>
+                      Navigator.of(context).push<void>(RegisterScreen.route()),
+                  child: Text(
+                    'Register here',
+                    style: TextStyle(color: Color(0xFF4B49FF)),
+                  ))
+            ],
+          ),
         ],
       ),
     );
@@ -172,15 +198,47 @@ class LoginPasswordInput extends StatelessWidget {
     return BlocBuilder<LoginCubit, LoginState>(
       buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
-        return TextFormField(
-          onChanged: (password) {
-            context.read<LoginCubit>().passwordChanged(password);
-          },
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              "Wpisz coś";
-            }
-          },
+        return Column(
+          children: [
+            Row(
+              children: [
+                Text('Password'),
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              height: 50,
+              child: TextFormField(
+                textAlignVertical: TextAlignVertical.bottom,
+                onChanged: (password) {
+                  context.read<LoginCubit>().passwordChanged(password);
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    "Wpisz coś";
+                  }
+                },
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: "Wpisz hasło",
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                      borderSide: BorderSide(
+                        width: 0.5,
+                        color: Color(0xFF4B49FF),
+                      )),
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                      borderSide: BorderSide(
+                        width: 0.5,
+                        color: Color(0xFF4B49FF),
+                      )),
+                ),
+              ),
+            ),
+          ],
         );
       },
     );
@@ -195,15 +253,47 @@ class LoginEmailInput extends StatelessWidget {
     return BlocBuilder<LoginCubit, LoginState>(
       buildWhen: (previous, current) => previous.email != current.email,
       builder: (context, state) {
-        return TextFormField(
-          onChanged: (email) {
-            context.read<LoginCubit>().emailChanged(email);
-          },
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              "Wpisz coś";
-            }
-          },
+        return Column(
+          children: [
+            Row(
+              children: [
+                Text('Email'),
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              height: 50,
+              child: TextFormField(
+                textAlignVertical: TextAlignVertical.bottom,
+                onChanged: (email) {
+                  context.read<LoginCubit>().emailChanged(email);
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    "Wpisz coś";
+                  }
+                },
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: "Wpisz email",
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                      borderSide: BorderSide(
+                        width: 0.5,
+                        color: Color(0xFF4B49FF),
+                      )),
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                      borderSide: BorderSide(
+                        width: 0.5,
+                        color: Color(0xFF4B49FF),
+                      )),
+                ),
+              ),
+            )
+          ],
         );
       },
     );
@@ -219,11 +309,22 @@ class LoginButton extends StatelessWidget {
       builder: (contex, state) {
         return state.status == LoginStatus.submitting
             ? CircularProgressIndicator()
-            : ElevatedButton(
-                onPressed: () {
-                  context.read<LoginCubit>().signInFormSubmitted();
-                },
-                child: Text('Login'));
+            : Container(
+                height: 44.0,
+                width: 150,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    gradient: LinearGradient(
+                        colors: [Color(0xFF444FFF), Color(0xFF850AFF)])),
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.transparent,
+                        shadowColor: Colors.transparent),
+                    onPressed: () {
+                      context.read<LoginCubit>().signInFormSubmitted();
+                    },
+                    child: Text('Login')),
+              );
       },
       buildWhen: (previous, current) => previous.status != current.status,
     );
