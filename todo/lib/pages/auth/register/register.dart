@@ -1,10 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:todo/pages/auth/login/login.dart';
 import 'package:todo/pages/auth/register/cubit/register_cubit.dart';
@@ -24,7 +19,7 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TodoAppBar(),
+      appBar: const TodoAppBar(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -46,12 +41,8 @@ class RegisterForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width;
     if (MediaQuery.of(context).orientation == Orientation.landscape) {
-      width = MediaQuery.of(context).size.width * 0.25;
-    } else {
-      width = MediaQuery.of(context).size.width * 1;
-    }
+    } else {}
     return BlocListener<RegisterCubit, RegisterState>(
       listener: (context, state) {
         const pattern = r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"
@@ -67,6 +58,7 @@ class RegisterForm extends StatelessWidget {
             regex.hasMatch(state.email) &&
             state.email.isNotEmpty &&
             state.password.isNotEmpty) {
+          Navigator.pop(context);
           showTopSnackBar(
             Overlay.of(context),
             CustomTopSnackBar.success(
@@ -137,7 +129,7 @@ class RegisterForm extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           SizedBox(
@@ -154,33 +146,33 @@ class RegisterForm extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           SizedBox(width: 200, child: Image.asset('assets/images/loginv.png')),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
-          RegisterEmailInput(),
-          SizedBox(
+          const RegisterEmailInput(),
+          const SizedBox(
             height: 8,
           ),
-          RegisterPasswordInput(),
-          SizedBox(
+          const RegisterPasswordInput(),
+          const SizedBox(
             height: 50,
           ),
-          RegisterButton(),
-          SizedBox(
+          const RegisterButton(),
+          const SizedBox(
             height: 8,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('You  have an account? '),
+              const Text('You  have an account? '),
               TextButton(
                   onPressed: () =>
                       Navigator.of(context).push<void>(LoginScreen.route()),
-                  child: Text(
+                  child: const Text(
                     'Login here',
                     style: TextStyle(color: Color(0xFF4B49FF)),
                   ))
@@ -203,11 +195,11 @@ class RegisterPasswordInput extends StatelessWidget {
         return Column(
           children: [
             Row(
-              children: [
+              children: const [
                 Text('Password'),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -219,19 +211,20 @@ class RegisterPasswordInput extends StatelessWidget {
                 },
                 validator: (password) {
                   if (password == null || password.isEmpty) {}
+                  return null;
                 },
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: "Wpisz hasło",
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         width: 0.5,
                         color: Color(0xFF4B49FF),
                       )),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         width: 0.5,
                         color: Color(0xFF4B49FF),
                       )),
@@ -256,11 +249,11 @@ class RegisterEmailInput extends StatelessWidget {
         return Column(
           children: [
             Row(
-              children: [
+              children: const [
                 Text('Email'),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -270,19 +263,21 @@ class RegisterEmailInput extends StatelessWidget {
                 onChanged: (email) {
                   context.read<RegisterCubit>().emailChanged(email);
                 },
-                validator: (value) {},
+                validator: (value) {
+                  return null;
+                },
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: "Wpisz email",
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         width: 0.5,
                         color: Color(0xFF4B49FF),
                       )),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         width: 0.5,
                         color: Color(0xFF4B49FF),
                       )),
@@ -310,11 +305,11 @@ class RegisterButton extends StatelessWidget {
                 width: 150,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                         colors: [Color(0xFF444FFF), Color(0xFF850AFF)])),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Colors.transparent,
+                        backgroundColor: Colors.transparent,
                         shadowColor: Colors.transparent),
                     onPressed: () {
                       context.read<RegisterCubit>().signupFormSubmitted();

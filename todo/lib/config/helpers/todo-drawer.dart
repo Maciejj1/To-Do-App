@@ -1,4 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// ignore_for_file: file_names
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,7 +7,6 @@ import 'package:todo/config/helpers/to_do_icons_icons.dart';
 import 'package:todo/config/helpers/todo-bottomNavBar.dart';
 import 'package:todo/pages/auth/conf/auth_repository.dart';
 import 'package:todo/pages/auth/login/cubit/login_cubit.dart';
-import 'package:todo/pages/dashboard/dashboard.dart';
 import '../../pages/auth/register/cubit/register_cubit.dart';
 import '../../pages/settings/settings.dart';
 import '../bloc/app_bloc.dart';
@@ -21,14 +21,14 @@ class TodoDrawer extends StatelessWidget {
           LoginCubit(AuthRepository()), // provide LoginCubit instance
       child: BlocProvider(
         create: (context) => RegisterCubit(AuthRepository()),
-        child: ToDoDraweContent(),
+        child: const ToDoDraweContent(),
       ),
     );
   }
 }
 
 class ToDoDraweContent extends StatefulWidget {
-  ToDoDraweContent({Key? key}) : super(key: key);
+  const ToDoDraweContent({Key? key}) : super(key: key);
 
   @override
   State<ToDoDraweContent> createState() => _ToDoDraweContentState();
@@ -111,8 +111,10 @@ class ToDoDraweContentBody extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ToDoSettings()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ToDoSettings()));
             },
           ),
           ListTile(
@@ -128,6 +130,7 @@ class ToDoDraweContentBody extends StatelessWidget {
             ),
             onTap: () {
               context.read<AppBloc>().add(AppLogoutRequested());
+              Navigator.pop(context);
             },
           ),
         ],

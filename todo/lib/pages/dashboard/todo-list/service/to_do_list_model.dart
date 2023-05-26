@@ -15,7 +15,6 @@ class TaskModel {
 
   bool get isNotEmpty => this != TaskModel.empty;
 
-  @override
   List<Object?> get props => [taskId, taskName, taskClosed, taskTime];
 }
 

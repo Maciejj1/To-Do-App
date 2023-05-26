@@ -1,20 +1,11 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:todo/config/helpers/to_do_icons_icons.dart';
 import 'package:todo/config/helpers/todo-appBar.dart';
 import 'package:todo/config/helpers/todo-drawer.dart';
 import 'package:todo/pages/dashboard/closed_todos.dart';
 import 'package:todo/pages/dashboard/dashboard.dart';
-
-// class ToDoBottomNav extends StatelessWidget {
-//   const ToDoBottomNav({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ToDoBottomNavContent();
-//   }
-// }
 
 class ToDoBottomNavContent extends StatefulWidget {
   const ToDoBottomNavContent(
@@ -30,14 +21,14 @@ class _ToDoBottomNavContentState extends State<ToDoBottomNavContent> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      backgroundColor: Color(0xFF6200EE),
+      backgroundColor: const Color(0xFF6200EE),
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.white.withOpacity(.60),
       selectedFontSize: 14,
       unselectedFontSize: 14,
       currentIndex: widget.selectedIndex,
       onTap: widget.onTap,
-      items: [
+      items: const [
         BottomNavigationBarItem(
           label: 'Tasks',
           icon: Icon(ToDoIcons.icon__home_2_),
@@ -73,7 +64,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TodoAppBar(),
+      appBar: const TodoAppBar(),
       drawer: const TodoDrawer(),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),

@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_emoji/flutter_emoji.dart';
 import 'package:todo/pages/dashboard/todo-list/cubit/to_do_list_cubit.dart';
 import 'package:todo/pages/dashboard/widgets/todo_card.dart';
-
-import '../../config/helpers/todo-appBar.dart';
-import '../../config/helpers/todo-bottomNavBar.dart';
-import '../../config/helpers/todo-drawer.dart';
 
 class ClosedTodos extends StatefulWidget {
   const ClosedTodos({Key? key}) : super(key: key);
@@ -56,7 +50,7 @@ class _ClosedTodosState extends State<ClosedTodos> {
             var todoList =
                 state.todos!.where((element) => element.status == 1).toList();
             return Padding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: ReorderableListView(
                 onReorder: (oldIndex, newIndex) {
                   setState(() {
@@ -69,7 +63,7 @@ class _ClosedTodosState extends State<ClosedTodos> {
                   for (int index = 1; index < todoList.length; index += 1)
                     ToDoCard(
                       key: ValueKey(todoList[index].id), // Assign a unique key
-                      todo: todoList[index], todoNumber: '${index}',
+                      todo: todoList[index], todoNumber: '$index',
                     ),
                 ],
               ),

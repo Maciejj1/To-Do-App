@@ -1,6 +1,6 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class TodoAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TodoAppBar({super.key});
@@ -8,8 +8,8 @@ class TodoAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text('TODO'),
-      backgroundColor: Color(0xFF6200EE),
+      title: const Text('TODO'),
+      backgroundColor: const Color(0xFF6200EE),
       flexibleSpace: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(

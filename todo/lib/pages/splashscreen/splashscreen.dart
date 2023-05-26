@@ -1,13 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:todo/config/bloc/app_bloc.dart';
-import 'package:todo/pages/auth/register/register.dart';
-import 'package:todo/pages/dashboard/dashboard.dart';
-
 import '../auth/login/login.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -27,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Welcome to To-Do")),
+      appBar: AppBar(title: const Text("Welcome to To-Do")),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -40,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen>
                 // },
                 onPressed: () =>
                     Navigator.of(context).push<void>(LoginScreen.route()),
-                child: Text('Lets start'))
+                child: const Text('Lets start'))
           ],
         ),
       ),

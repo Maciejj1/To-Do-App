@@ -1,7 +1,6 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:equatable/equatable.dart';
-import 'package:todo/pages/dashboard/todo-list/bloc/to_do_list_bloc.dart';
 import 'package:todo/pages/dashboard/todo-list/repo/IToDoRepository.dart';
 import 'package:todo/pages/dashboard/todo-list/repo/to_do_list_repository.dart';
 import 'package:todo/pages/dashboard/todo-list/service/to_do_list_model.dart';

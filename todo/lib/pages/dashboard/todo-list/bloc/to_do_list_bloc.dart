@@ -1,7 +1,8 @@
+// ignore_for_file: depend_on_referenced_packages, avoid_print
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:todo/pages/dashboard/todo-list/cubit/to_do_list_cubit.dart';
 import 'package:todo/pages/dashboard/todo-list/repo/to_do_list_repository.dart';
 
 import '../service/to_do_list_model.dart';

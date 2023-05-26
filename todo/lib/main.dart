@@ -6,7 +6,6 @@ import 'package:todo/config/bloc/app_bloc.dart';
 import 'package:todo/config/routes/todo_routes.dart';
 import 'package:todo/firebase_options.dart';
 import 'package:todo/pages/auth/conf/auth_repository.dart';
-import 'package:todo/pages/auth/register/cubit/register_cubit.dart';
 import 'package:todo/pages/dashboard/todo-list/cubit/to_do_list_cubit.dart';
 
 void main() async {
@@ -45,7 +44,7 @@ void main() async {
 // }
 class MyApp extends StatelessWidget {
   final AuthRepository _authRepository;
-  MyApp({Key? key, required AuthRepository authRepository})
+  const MyApp({Key? key, required AuthRepository authRepository})
       : _authRepository = authRepository,
         super(key: key);
   @override
@@ -59,7 +58,7 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(create: (context) => ToDoCubit()..getAllTodo())
         ],
-        child: AppView(),
+        child: const AppView(),
       ),
     );
   }

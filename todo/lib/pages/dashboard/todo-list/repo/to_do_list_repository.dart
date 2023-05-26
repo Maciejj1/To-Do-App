@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart' as firebase_firestore;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:todo/pages/dashboard/todo-list/bloc/to_do_list_bloc.dart';
 import 'package:todo/pages/dashboard/todo-list/repo/IToDoRepository.dart';
 import 'package:todo/pages/dashboard/todo-list/service/to_do_list_model.dart';
 

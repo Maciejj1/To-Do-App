@@ -1,9 +1,8 @@
 import 'dart:async';
 
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:meta/meta.dart';
 import 'package:todo/pages/auth/conf/auth_repository.dart';
 import 'package:todo/pages/auth/models/user_model.dart';
 

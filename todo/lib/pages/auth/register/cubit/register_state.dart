@@ -12,11 +12,11 @@ class RegisterState extends Equatable {
   final String password;
   final RegisterStatus status;
 
-  RegisterState(
+  const RegisterState(
       {required this.email, required this.password, required this.status});
 
   factory RegisterState.initial() {
-    return RegisterState(
+    return const RegisterState(
         email: '', password: '', status: RegisterStatus.initial);
   }
   RegisterState copyWith(

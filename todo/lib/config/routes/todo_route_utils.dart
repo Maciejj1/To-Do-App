@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 enum APP_PAGE { splash, login, register, home, error, onBoarding }
 
 extension AppPageExtension on APP_PAGE {

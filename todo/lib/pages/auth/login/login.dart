@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:todo/config/helpers/todo-appBar.dart';
 import 'package:todo/pages/auth/conf/auth_repository.dart';
 import 'package:todo/pages/auth/login/cubit/login_cubit.dart';
-import 'package:todo/pages/auth/models/user_model.dart';
 import 'package:todo/pages/auth/register/register.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
@@ -23,7 +19,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TodoAppBar(),
+      appBar: const TodoAppBar(),
       body: SafeArea(
           child: SingleChildScrollView(
         child: Padding(
@@ -45,12 +41,6 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width;
-    if (MediaQuery.of(context).orientation == Orientation.landscape) {
-      width = MediaQuery.of(context).size.width * 0.25;
-    } else {
-      width = MediaQuery.of(context).size.width * 1;
-    }
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
         const pattern = r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"
@@ -135,7 +125,7 @@ class LoginForm extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           SizedBox(
@@ -152,33 +142,33 @@ class LoginForm extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           SizedBox(width: 200, child: Image.asset('assets/images/loginv.png')),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
-          LoginEmailInput(),
-          SizedBox(
+          const LoginEmailInput(),
+          const SizedBox(
             height: 8,
           ),
-          LoginPasswordInput(),
-          SizedBox(
+          const LoginPasswordInput(),
+          const SizedBox(
             height: 50,
           ),
-          LoginButton(),
-          SizedBox(
+          const LoginButton(),
+          const SizedBox(
             height: 8,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('You don\'t have an account? '),
+              const Text('You don\'t have an account? '),
               TextButton(
                   onPressed: () =>
                       Navigator.of(context).push<void>(RegisterScreen.route()),
-                  child: Text(
+                  child: const Text(
                     'Register here',
                     style: TextStyle(color: Color(0xFF4B49FF)),
                   ))
@@ -201,11 +191,11 @@ class LoginPasswordInput extends StatelessWidget {
         return Column(
           children: [
             Row(
-              children: [
+              children: const [
                 Text('Password'),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -219,19 +209,20 @@ class LoginPasswordInput extends StatelessWidget {
                   if (value == null || value.isEmpty) {
                     "Wpisz coś";
                   }
+                  return null;
                 },
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: "Wpisz hasło",
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         width: 0.5,
                         color: Color(0xFF4B49FF),
                       )),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         width: 0.5,
                         color: Color(0xFF4B49FF),
                       )),
@@ -256,11 +247,11 @@ class LoginEmailInput extends StatelessWidget {
         return Column(
           children: [
             Row(
-              children: [
+              children: const [
                 Text('Email'),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -274,19 +265,20 @@ class LoginEmailInput extends StatelessWidget {
                   if (value == null || value.isEmpty) {
                     "Wpisz coś";
                   }
+                  return null;
                 },
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: "Wpisz email",
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         width: 0.5,
                         color: Color(0xFF4B49FF),
                       )),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         width: 0.5,
                         color: Color(0xFF4B49FF),
                       )),
@@ -308,22 +300,22 @@ class LoginButton extends StatelessWidget {
     return BlocBuilder<LoginCubit, LoginState>(
       builder: (contex, state) {
         return state.status == LoginStatus.submitting
-            ? CircularProgressIndicator()
+            ? const CircularProgressIndicator()
             : Container(
                 height: 44.0,
                 width: 150,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                         colors: [Color(0xFF444FFF), Color(0xFF850AFF)])),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Colors.transparent,
+                        backgroundColor: Colors.transparent,
                         shadowColor: Colors.transparent),
                     onPressed: () {
                       context.read<LoginCubit>().signInFormSubmitted();
                     },
-                    child: Text('Login')),
+                    child: const Text('Login')),
               );
       },
       buildWhen: (previous, current) => previous.status != current.status,
