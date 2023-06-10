@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  <a href=""><img src="assets/images/launcherLogo.png" alt="ToDo" width="200"></a>
+  <a href=""><img src="https://i.postimg.cc/NfwWQ1Cr/launcher-Logo-kopia.png" alt="ToDo" width="200"></a>
   <br>
   ToDo
   <br>
@@ -33,7 +33,7 @@
   <a href="#related">Related</a> •
 </p>
 
-<img src="assets/images/social.png" alt="figma"/>
+<img src="https://i.postimg.cc/mgVxXtw1/Cover-3.png" alt="figma"/>
 
 ## Key Features
 
